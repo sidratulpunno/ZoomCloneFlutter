@@ -9,9 +9,16 @@ class JitsiMeetMethods {
     required String roomName,
     required bool isAudioMuted,
     required bool isVideoMuted,
+    String username = '',
   }) async {
     var jitsiMeet = JitsiMeet();
     try {
+      String name;
+      if (username.isEmpty) {
+        name = _authMethods.user.displayName!;
+      } else {
+        name = username;
+      }
       var options = JitsiMeetConferenceOptions(
         serverURL: "https://meet.jit.si",
         room: roomName,
@@ -19,8 +26,9 @@ class JitsiMeetMethods {
           "startWithAudioMuted": isAudioMuted,
           "startWithVideoMuted": isVideoMuted,
         },
+        featureFlags: {"unsaferoomwarning.enabled": false},
         userInfo: JitsiMeetUserInfo(
-          displayName: _authMethods.user.displayName,
+          displayName: name,
           email: _authMethods.user.email,
           avatar: _authMethods.user.photoURL,
         ),
