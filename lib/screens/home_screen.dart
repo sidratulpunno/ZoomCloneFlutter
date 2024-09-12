@@ -24,9 +24,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   List<Widget> pages = [
-    const MeetingScreen(),
+    MeetingScreen(),
     const HistoryMeetingScreen(),
-    const Text('Contaacts'),
+    const Text('Contacts'),
     const Text('Settings'),
   ];
 
