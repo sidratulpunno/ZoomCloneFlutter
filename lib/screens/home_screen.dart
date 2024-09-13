@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:meeting_app/resources/auth_method.dart';
 import 'package:meeting_app/screens/history_meeting_screen.dart';
 import 'package:meeting_app/screens/meeting_screen.dart';
 import 'package:meeting_app/utils/colors.dart';
+import 'package:meeting_app/widgets/custom_button.dart';
 import 'package:meeting_app/widgets/home_meeting_button.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -27,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
     MeetingScreen(),
     const HistoryMeetingScreen(),
     const Text('Contacts'),
-    const Text('Settings'),
+    CustomButton(text: 'Log out', onPressed: () => AuthMethods().signOut())
   ];
 
   @override
@@ -66,9 +68,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 label: 'Contacts'),
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.settings_outlined,
+                  Icons.logout,
                 ),
-                label: 'Settings'),
+                label: 'Log out'),
           ]),
     );
   }
