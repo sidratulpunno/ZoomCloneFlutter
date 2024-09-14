@@ -22,7 +22,7 @@ class JitsiMeetMethods {
         name = username;
       }
       var options = JitsiMeetConferenceOptions(
-        serverURL: "https://meet.jit.si",
+        serverURL: "https://meet.ffmuc.net/",
         room: roomName,
         configOverrides: {
           "startWithAudioMuted": isAudioMuted,

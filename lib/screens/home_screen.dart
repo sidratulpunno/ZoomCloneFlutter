@@ -28,7 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> pages = [
     MeetingScreen(),
     const HistoryMeetingScreen(),
-    const Text('Contacts'),
     CustomButton(text: 'Log out', onPressed: () => AuthMethods().signOut())
   ];
 
@@ -61,11 +60,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   Icons.lock_clock,
                 ),
                 label: 'Meetings'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.person_outline,
-                ),
-                label: 'Contacts'),
+            // BottomNavigationBarItem(
+            //     icon: Icon(
+            //       Icons.person_outline,
+            //     ),
+            //     label: 'Contacts'),
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.logout,
