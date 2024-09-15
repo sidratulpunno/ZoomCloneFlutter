@@ -28,25 +28,28 @@ class MeetingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            HomeMeetingButton(
-              onPressed: createNewMeeting,
-              text: 'New Meeting',
-              icon: Icons.videocam,
-            ),
-            HomeMeetingButton(
-              onPressed: () => joinMeeting(context),
-              text: 'Join Meeting',
-              icon: Icons.add_box_rounded,
-            ),
-            // HomeMeetingButton(
-            //   onPressed: () {},
-            //   text: 'Scheduling',
-            //   icon: Icons.calendar_today,
-            // ),
-          ],
+        Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              HomeMeetingButton(
+                onPressed: createNewMeeting,
+                text: 'New Meeting',
+                icon: Icons.videocam,
+              ),
+              HomeMeetingButton(
+                onPressed: () => joinMeeting(context),
+                text: 'Join Meeting',
+                icon: Icons.add_box_rounded,
+              ),
+              // HomeMeetingButton(
+              //   onPressed: () {},
+              //   text: 'Scheduling',
+              //   icon: Icons.calendar_today,
+              // ),
+            ],
+          ),
         ),
         const Expanded(
           child: Center(
