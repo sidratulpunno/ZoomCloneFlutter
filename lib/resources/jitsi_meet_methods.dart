@@ -7,20 +7,19 @@ class JitsiMeetMethods {
   final AuthMethods _authMethods = AuthMethods();
   final FireStoreMethods _fireStoreMethods = FireStoreMethods();
 
-  void createMeeting({
+  Future<void> createMeeting({
     required String roomName,
     required bool isAudioMuted,
     required bool isVideoMuted,
     String username = '',
   }) async {
     var jitsiMeet = JitsiMeet();
+
     try {
-      String name;
-      if (username.isEmpty) {
-        name = _authMethods.user.displayName!;
-      } else {
-        name = username;
-      }
+      // Use the provided username, or fallback to the user's display name if available
+      final currentUser = _authMethods.user;
+      String name = username.isNotEmpty ? username : (currentUser?.displayName ?? 'Guest');
+
       var options = JitsiMeetConferenceOptions(
         serverURL: "https://meet.ffmuc.net/",
         room: roomName,
@@ -31,13 +30,13 @@ class JitsiMeetMethods {
         featureFlags: {"unsaferoomwarning.enabled": false},
         userInfo: JitsiMeetUserInfo(
           displayName: name,
-          email: _authMethods.user.email,
-          avatar: _authMethods.user.photoURL,
+          email: currentUser?.email, // Use null-aware operator
+          avatar: currentUser?.photoURL, // Use null-aware operator
         ),
       );
 
-      // Add this line to join the meeting
-      _fireStoreMethods.addMeetingHistory(roomName);
+      // Add meeting to history and join meeting
+      await _fireStoreMethods.addMeetingHistory(roomName);
       jitsiMeet.join(options);
     } catch (error) {
       print("Error: $error");
