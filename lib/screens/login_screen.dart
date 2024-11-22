@@ -109,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const Text('Or continue with'),
                 CustomButton(
-                  text: 'Google Sign In',
+                  text: _isLogin ? 'Google SIgn In' : 'Google SIgn Up',
                   onPressed: () async {
                     bool res = await _authMethods.signInWithGoogle(context);
                     if (res) {
@@ -124,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   child: Text(_isLogin
                       ? 'Don’t have an account? Sign Up'
-                      : 'Already have an account? Login'),
+                      : 'Already have an account? Login',style: const TextStyle(color: Colors.white),),
                 ),
 
 

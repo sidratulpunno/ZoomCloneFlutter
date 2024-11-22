@@ -5,7 +5,7 @@
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
 
-        android:label="meeting_app"
+        android:label="BDU Meetings"
         tools:replace="android:label">
         <activity
             android:name=".MainActivity"

@@ -77,12 +77,14 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+            const Text('Enter Your meeting credentials',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),),
+            const SizedBox(height: 20,),
             TextField(
               controller: meetingIdController,
               textAlign: TextAlign.center,
               keyboardType: TextInputType.text,
               decoration: const InputDecoration(
-                hintText: 'Room ID',
+                hintText: 'Enter Room ID',
                 fillColor: secondaryBackgroundColor,
                 filled: true,
                 border: OutlineInputBorder(
@@ -109,23 +111,6 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            isJoining
-                ? const CircularProgressIndicator()
-                : ElevatedButton(
-              onPressed: _joinMeeting,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 12,
-                  horizontal: 24,
-                ),
-              ),
-              child: const Text(
-                'Join',
-                style: TextStyle(fontSize: 16),
-              ),
-            ),
-            const SizedBox(height: 20),
             MeetingOption(
               text: 'Mute Audio',
               isMute: isAudioMuted,
@@ -136,6 +121,24 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
               isMute: isVideoMuted,
               onChange: _onVideoMuted,
             ),
+            const SizedBox(height: 20),
+            isJoining
+                ? const CircularProgressIndicator()
+                : ElevatedButton(
+              onPressed: _joinMeeting,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurple,
+                padding: const EdgeInsets.symmetric(
+                  vertical: 12,
+                  horizontal: 24,
+                ),
+              ),
+              child: const Text(
+                'Join meeting',
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+
           ],
         ),
       ),
